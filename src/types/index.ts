@@ -23,6 +23,7 @@ export interface ProductRecord {
     product_name: string | null;
     product_brand: string | null;
     product_category: string | null;
+    product_unique_id: string | null;
     product_style_code: string | null;
     product_release_date: string | null;
     product_description: string | null;
@@ -82,6 +83,7 @@ export interface ProductDetails {
     designer: string;
     main_color: string;
     model: string;
+    product_unique_id: string | null;
     gender: string;
     upper_material: string;
     release_date: string;
@@ -135,6 +137,7 @@ export interface BarcodeLookupProduct {
     product_name: string | null;
     product_brand: string | null;
     product_category: string | null;
+    product_unique_id: string | null;
     product_description: string | null;
     product_style_code: string | null;
     product_colorway: string | null;
