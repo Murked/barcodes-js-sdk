@@ -1,6 +1,6 @@
 {
   "name": "@barcodesgg/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official SDK for Barcodes.gg API",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
