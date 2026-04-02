@@ -7,6 +7,7 @@ import {
     ProductLatestQuery,
     ProductLatestResponse,
     ProductLookupBySkuResponse,
+    ProductLookupByUidResponse,
     ProductSearchParams,
     ProductSearchResponse,
     ProductUpcomingQuery,
@@ -26,6 +27,11 @@ export function createProductsEndpoints(client: ApiClient) {
         lookupBySku(styleCode: string) {
             const encodedStyleCode = encodeURIComponent(styleCode);
             return client.get<ProductLookupBySkuResponse>(`/product/lookup/sku/${encodedStyleCode}`);
+        },
+
+        lookupByUid(productUniqueId: string) {
+            const encodedProductUniqueId = encodeURIComponent(productUniqueId);
+            return client.get<ProductLookupByUidResponse>(`/product/lookup/uid/${encodedProductUniqueId}`);
         },
 
         details(styleCode: string) {

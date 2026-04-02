@@ -75,6 +75,12 @@ const response = await sdk.products.searchBulk(
 const response = await sdk.products.lookupBySku("DZ5485-612");
 ```
 
+#### Lookup product by unique ID
+
+```ts
+const response = await sdk.products.lookupByUid("prod_123456");
+```
+
 #### Product details
 
 ```ts
@@ -106,6 +112,39 @@ const response = await sdk.products.latest({
 ```ts
 const response = await sdk.products.alternatives("DZ5485-612");
 ```
+
+### Images
+
+The image endpoints live under /api (not /api/v2) and return raw image bytes.
+
+- GET /api/image/{style_code}
+- GET /api/image/uid/{product_unique_id}
+
+Example fetch call:
+
+```ts
+const res = await fetch("https://barcodes.gg/api/image/uid/prod_123456", {
+  headers: {
+    Authorization: `Bearer ${process.env.BARCODES_API_KEY}`,
+  },
+});
+
+if (!res.ok) {
+  throw new Error(`Image lookup failed with status ${res.status}`);
+}
+
+const imageBytes = await res.arrayBuffer();
+```
+
+## Why UID Methods Exist
+
+Some products can share the same SKU while still having meaningful differences (for example, color variants). In those cases, SKU-based lookups may not be specific enough.
+
+Use product_unique_id from search responses when you need exact product targeting:
+
+- Product lookup by UID: sdk.products.lookupByUid(productUniqueId)
+
+This gives you a stable way to fetch the exact product payload and image for one specific variant.
 
 ### Barcodes
 
@@ -194,4 +233,3 @@ import type {
   TokenUsageResponse,
 } from "@barcodesgg/sdk";
 ```
-

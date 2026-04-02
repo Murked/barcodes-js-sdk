@@ -64,6 +64,10 @@ export interface ProductLookupBySkuResponse extends V2SuccessEnvelope {
     results: ProductRecord[];
 }
 
+export interface ProductLookupByUidResponse extends V2SuccessEnvelope {
+    results: ProductRecord[];
+}
+
 export interface ProductDetailsSize {
     eu: string;
     uk: string;
